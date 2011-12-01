@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>sv.hnavarro.examples.hr</groupId>
+	<artifactId>hr-project</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<name>hr-project</name>
+	<url>http://hnavarro-sv.blogspot.com</url>
+
+	<developers>
+		<developer>
+			<id>hnavarro</id>
+			<name>Hugo Navarro</name>
+			<email>hugo.navarro.sv@gmail.com</email>
+			<organization>hnavarro-sv</organization>
+			<url>http://hnavarro-sv.blogspot.com</url>
+			<organizationUrl>http://hnavarro-sv.blogspot.com</organizationUrl>
+			<timezone>(UTC-06:00) América Central</timezone>
+			<roles>
+				<role>Lider de Proyecto</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<modules>
+		<module>hr-war</module>
+		<module>hr-ear</module>
+	</modules>
+	
+	<properties>
+		<project.encoding>UTF-8</project.encoding>
+		<java.source>1.6</java.source>
+		<java.target>1.6</java.target>
+	</properties>	
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>sv.hnavarro.examples.hr</groupId>
+				<artifactId>hr</artifactId>
+				<type>war</type>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${java.source}</source>
+					<target>${java.target}</target>
+					<encoding>${project.encoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
