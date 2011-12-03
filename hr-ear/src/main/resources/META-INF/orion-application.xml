@@ -1,10 +1,7 @@
 <?xml version = '1.0' encoding = 'windows-1252'?>
 <orion-application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://xmlns.oracle.com/oracleas/schema/orion-application-10_0.xsd"
-	default-data-source="jdbc/hrDS">
+	xsi:noNamespaceSchemaLocation="http://xmlns.oracle.com/oracleas/schema/orion-application-10_0.xsd">
 
-	<data-sources path="./data-sources.xml" />
-	
 	<web-module id="hr" path="hr.war" />
 
 	<persistence path="persistence" />
@@ -19,10 +16,6 @@
 
 		<import-shared-library name="xalan.xml"
 			min-version="2.7.1" max-version="2.7.1" />
-
-		<import-shared-library name="oracle.jdbc" />
-		<import-shared-library name="oracle.toplink" />
-		<import-shared-library name="oracle.persistence" />
 
 	</imported-shared-libraries>
 

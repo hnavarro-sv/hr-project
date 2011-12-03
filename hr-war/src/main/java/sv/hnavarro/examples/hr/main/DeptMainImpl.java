@@ -40,23 +40,23 @@ import sv.hnavarro.examples.hr.schema.ObjectFactory;
 @Component
 public class DeptMainImpl {
 	Logger log = Logger.getLogger(this.getClass());
-	
+
 	private SimpleJdbcCall call;
 
 	@Autowired
 	@Qualifier("dataSource")
 	public void init(DataSource dataSource) {
 		log.debug("Initial!");
-				
+
 		this.call = new SimpleJdbcCall(dataSource)
 				.withSchemaName("HR")
 				.withCatalogName("PKG_HR")
-				.withProcedureName("proc_dept_emps")
+				.withProcedureName("PROC_DEPT_EMPS")
 				.withoutProcedureColumnMetaDataAccess()
 				.declareParameters(
-						new SqlParameter("in_dept_id", Types.NUMERIC),
-						new SqlOutParameter("out_dept_name", Types.VARCHAR),
-						new SqlOutParameter("out_dept_emps", Types.ARRAY,
+						new SqlParameter("IN_DEPT_ID", Types.NUMERIC),
+						new SqlOutParameter("OUT_DEPT_NAME", Types.VARCHAR),
+						new SqlOutParameter("OUT_DEPT_EMPS", Types.ARRAY,
 								"TYPE_EMPS", new SqlReturnSqlData(SqlEmp.class)
 
 						)
@@ -66,15 +66,15 @@ public class DeptMainImpl {
 
 	public Dept getDepartmentEmployees(final Integer departmentId) {
 		log.debug("Get!");
-		
+
 		Map<String, Object> in = new LinkedHashMap<String, Object>();
-		in.put("in_dept_id", departmentId);
+		in.put("IN_DEPT_ID", departmentId);
 
 		@SuppressWarnings("rawtypes")
 		Map out = call.execute(in);
 
-		String name = (String) out.get("out_dept_name");
-		ARRAY array = (ARRAY) out.get("out_dept_emps");
+		String name = (String) out.get("OUT_DEPT_NAME");
+		ARRAY array = (ARRAY) out.get("OUT_DEPT_EMPS");
 
 		ObjectFactory of = new ObjectFactory();
 		Dept dept = of.createDept();
@@ -86,8 +86,8 @@ public class DeptMainImpl {
 	}
 
 	private Emps transformer(ARRAY array) {
-		log.debug("Build!");
-		
+		log.debug("Transformer!");
+
 		ObjectFactory of = new ObjectFactory();
 		Emps emps = of.createEmps();
 

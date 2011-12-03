@@ -43,7 +43,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>sv.hnavarro.examples.hr</groupId>
-			<artifactId>hr</artifactId>
+			<artifactId>hr-war</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
@@ -60,7 +60,7 @@
 					<modules>
 						<webModule>
 							<groupId>sv.hnavarro.examples.hr</groupId>
-							<artifactId>hr</artifactId>
+							<artifactId>hr-war</artifactId>
 							<bundleFileName>hr.war</bundleFileName>
 							<contextRoot>/hr</contextRoot>
 						</webModule>
